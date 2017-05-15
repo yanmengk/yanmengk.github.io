@@ -349,9 +349,15 @@
       
         
           
-            <p>My first mac post!</p>
+          My first mac post!
 
           
+
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/05/15/myMacPost/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -459,99 +465,17 @@
       
         
           
-            <hr>
-<ol>
-<li>如何退出Python提示符<br>如果你使用的是Linux/BSDshell，那么按Ctrl-d退出提示符。如果是在Windows命令行中，则按Ctrl-z再按Enter<br>by the way,如果想在程序运行时中断执行或取消程序，按Ctrl-c</li>
-<li>行末的单独一个反斜杠\表示字符串在下一行继续，而不是开始一个新的行<blockquote>
-<p>“This is the first sentence.\<br>… This is the second sentence.”<br>即为’This is the first sentence.This is the second sentence.’</p>
-</blockquote>
-</li>
-<li><p>行连接：<br>明确的行连接如反斜杠</p>
-<blockquote>
-<p> s = ‘This is a string. \<br>This continues the string.’<br>print s<br>还有一种暗示的假设，可以使你不需要使用反斜杠。这种情况出现在逻辑行中使用了圆括号、方括号或波形括号的时候。这被称为暗示的行连接</p>
-</blockquote>
-</li>
-<li><p>关于左移、右移，按位操作</p>
-<blockquote>
-<p>左移&lt;&lt; 把一个数的比特向左移一定数目（每个数在内存中都表示为比特<br>或二进制数字，即0和1）<br>2 &lt;&lt; 2得到8。——2按比特表示为10<br> 右移&gt;&gt; 把一个数的比特向右移一定数目<br>11 &gt;&gt; 1得到5。——11按比特表示为<br>1011，向右移动1比特后得到101，即十进制的5。<br>按位与&amp;    数的按位与5 &amp; 3得到1。<br>按位或|     数的按位或5 | 3得到7。<br>按位异或^   数的按位异或5 ^ 3得到6<br>按位翻转~    x的按位翻转是-(x+1) ~5得到-6。</p>
-</blockquote>
-</li>
-<li><p>raw_input函数提供的是一个字符串，如果想要变为其他类型，则必须进行转换，如：转换为int:</p>
-<blockquote>
-<p>guess = int(raw_input(‘Enter an integer : ‘))</p>
-</blockquote>
-</li>
-<li><p>注意布尔值的大小写问题：True、False（小写是错误的）</p>
-</li>
-<li>关于函数的可变参数、关键字参数如下：</li>
-</ol>
-<p>可变参数允许你传入0个或任意个参数，这些可变参数在函数调用时自动组装为一个tuple。而关键字参数允许你传入0个或任意个含参数名的参数，这些关键字参数在函数内部自动组装为一个dict。请看示例：</p>
-<blockquote>
-<p>def person(name, age, **kw):<br>    print ‘name:’, name, ‘age:’, age, ‘other:’, kw<br>函数person除了必选参数name和age外，还接受关键字参数kw。在调用该函数时，可以只传入必选参数：<br>person(‘Michael’, 30)<br>name: Michael age: 30 other: {}</p>
-</blockquote>
-<pre><code>也可以传入任意个数的关键字参数：
-</code></pre><blockquote>
-<p>person(‘Bob’, 35, city=’Beijing’)<br>name: Bob age: 35 other: {‘city’: ‘Beijing’}<br> person(‘Adam’, 45, gender=’M’, job=’Engineer’)<br>name: Adam age: 45 other: {‘gender’: ‘M’, ‘job’: ‘Engineer’}</p>
-</blockquote>
-<p>关键字参数有什么用？它可以扩展函数的功能。比如，在person函数里，我们保证能接收到name和age这两个参数，但是，如果调用者愿意提供更多的参数，我们也能收到。试想你正在做一个用户注册的功能，除了用户名和年龄是必填项外，其他都是可选项，利用关键字参数来定义这个函数就能满足注册的需求。</p>
-<p>要注意定义可变参数和关键字参数的语法：</p>
-<blockquote>
-<p><em>args是可变参数，args接收的是一个tuple；<br>*</em>kw是关键字参数，kw接收的是一个dict。</p>
-</blockquote>
-<p> 以上引自廖雪峰python教程，更多请见其<a href="http://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000/001431752945034eb82ac80a3e64b9bb4929b16eeed1eb9000" target="_blank" rel="external">网站</a></p>
-<ol>
-<li>使用文档字符串DocStrings<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!/usr/bin/env python</span></div><div class="line"><span class="comment">#Filename:func_doc.py</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">printMax</span><span class="params">(x,y)</span>:</span></div><div class="line">    <span class="string">'''Prints the maximun of two numbers.</span></div><div class="line"></div><div class="line">    The two values must be integers.'''</div><div class="line">    x=int(x)</div><div class="line">    y=int(y)</div><div class="line"></div><div class="line">    <span class="keyword">if</span> x &gt; y:</div><div class="line"></div><div class="line">        <span class="keyword">print</span> x,<span class="string">'is maximum'</span></div><div class="line">    <span class="keyword">else</span>:</div><div class="line">        <span class="keyword">print</span> y,<span class="string">'is maximum'</span></div><div class="line"></div><div class="line">printMax(<span class="number">3</span>,<span class="number">5</span>)</div><div class="line"><span class="keyword">print</span> printMax.__doc__</div></pre></td></tr></table></figure>
-</li>
-</ol>
-<blockquote>
-<p>$ python func_doc.py<br>5 is maximum<br>Prints the maximum of two numbers.</p>
-</blockquote>
-<p>The two values must be integers.<br>文档字符串的惯例是一个多行字符串，它的首行以大写字母开始，句号结尾。第二行是空行，从第三行开始是详细的描述。强烈建议你在你的函数中使用文档字符串时遵循这个惯例。你可以使用<strong>doc</strong>（注意双下划线）调用printMax函数的文档字符串属性（属于函数的名称）。请记住Python把每一样东西 都作为对象，包括这个函数。<br>如果你已经在Python中使用过help()，那么你已经看到过DocStings的使用了！它所做的只是抓取函数的<strong>doc</strong>属性，然后整洁地展示给你。你可以对上面这个函数尝试一下——只是在你的程序中包括help(printMax)。记住<strong>按q退出help</strong>。</p>
-<ol>
-<li><p>使用sys模块<br><strong>sys模块包含了与Python解释器和它的环境有关的函数</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!/usr/bin/env python</span></div><div class="line"><span class="comment">#Filename: using_sys.py</span></div><div class="line"><span class="keyword">import</span> sys</div><div class="line"><span class="keyword">print</span> <span class="string">'The command line arguments are:'</span></div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> sys.argv:</div><div class="line">	<span class="keyword">print</span> i</div><div class="line"><span class="keyword">print</span> <span class="string">'\n\nThe PYTHONPATH is'</span>,sys.path,<span class="string">'\n'</span></div></pre></td></tr></table></figure>
-<blockquote>
-<p>python using_sys.py we are arguments<br>The command line arguments are:<br>using_sys.py<br>we<br>are<br>arguments       </p>
-</blockquote>
-</li>
-</ol>
-<blockquote>
-<p>The PYTHONPATH is [‘H:\Python’, ‘C:\Windows\system32\python27.zip’, ‘D:\Pyt<br>hon\DLLs’, ‘D:\Python\lib’, ‘D:\Python\lib\plat-win’, ‘D:\Python\lib\li<br>b-tk’, ‘D:\Python’, ‘D:\Python\lib\site-packages’]</p>
-</blockquote>
-<p>当Python执行import   sys语句的时候，它在sys.path变量中所列目录中寻找sys.py模块。如果找到了这个文件，这个模块的主块中的语句将被运行，然后这个模块将能够被你 使用 。注意，初始化过程仅在我们第一次输入模块的时候进行。另外“sys”是“system”的缩写。<br>这里，当我们执行python using_sys.py we are arguments的时候，我们使用python命令运行using_sys.py模块，后面跟着的内容被作为参数传递给程序。Python为我们把它存储在sys.argv变量中。<br>记住，脚本的名称总是sys.argv列表的第一个参数。所以，在这里，’using_sys.py’是sys.argv[0]、’we’是sys.argv[1]、’are’是sys.argv[2]以及’arguments’是sys.argv[3]。</p>
-<ol>
-<li>使用模块的<strong>name</strong><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!/usr/bin/python</span></div><div class="line"><span class="comment"># Filename: using_name.py</span></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">	<span class="keyword">print</span> <span class="string">'This program is being run by itself'</span></div><div class="line"><span class="keyword">else</span>:</div><div class="line">	<span class="keyword">print</span> <span class="string">'I am being imported from another module'</span></div></pre></td></tr></table></figure>
-</li>
-</ol>
-<blockquote>
-<p>python using_name.py<br>This program is being run by itself</p>
-<p>import using_name<br>I am being imported from another module</p>
-</blockquote>
-<p>每个Python模块都有它的<strong>name</strong>，如果它是’<strong>main</strong>‘，这说明这个模块被用户单独运行，我们可以进行相应的恰当操作。</p>
-<ol>
-<li>dir()函数<br>你可以使用内建的dir函数来列出模块定义的标识符。标识符有函数、类和变量。当你为dir()提供一个模块名的时候，它返回模块定义的名称列表。如果不提供参数，它返回当前模块中定义的名称列表。<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt;import sys</div><div class="line">&gt;&gt;&gt; dir(sys)</div><div class="line">['__displayhook__', '__doc__', '__excepthook__', '__name__', '__package__', '__s</div><div class="line">tderr__', '__stdin__', '__stdout__', '_clear_type_cache', '_current_frames', ...]</div><div class="line">&gt;&gt;&gt; dir()</div><div class="line">['__builtins__', '__doc__', '__name__', '__package__', 'sys']</div><div class="line">&gt;&gt;&gt; a=5</div><div class="line">&gt;&gt;&gt; dir()</div><div class="line">['__builtins__', '__doc__', '__name__', '__package__', 'a', 'sys']</div><div class="line">&gt;&gt;&gt; del a</div><div class="line">&gt;&gt;&gt; dir()</div><div class="line">['__builtins__', '__doc__', '__name__', '__package__', 'sys']</div></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>12.对象与引用<br>如果想要复制一个列表或者类似的序列或者其他复杂的对象（不是如整数那样的简单对象 ），那么你必须使用切片操作符来取得拷贝。如果你只是想要使用另一个变量名，两个名称都引用同一个对象，那么如果不小心<br>的话，可能会引来各种麻烦。</p>
-<blockquote>
-<p>mylist = shoplist  # mylist is just another name pointing to the same object!<br>mylist = shoplist[:] # make a copy by doing a full slice<br> 列表的赋值语句不创建拷贝,得使用切片操作符来建立序列的拷贝</p>
-</blockquote>
-<p>13.str类也有以一个作为分隔符的字符串join序列的项目的整洁的方法，它返回一个生成的大字符串。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; deli=&apos;_*_&apos;</div><div class="line">&gt;&gt;&gt; mylist=[&apos;Brazil&apos;,&apos;Russia&apos;,&apos;India&apos;,&apos;China&apos;]</div><div class="line">&gt;&gt;&gt; print deli.join(mylist)</div><div class="line">Brazil_*_Russia_*_India_*_China</div><div class="line"></div><div class="line">&gt;&gt;&gt; seq = [&apos;1&apos;,&apos;2&apos;,&apos;3&apos;,&apos;4&apos;,&apos;5&apos;]</div><div class="line">&gt;&gt;&gt; sep = &apos;,&apos;</div><div class="line">&gt;&gt;&gt; s = sep.join(seq)</div><div class="line">&gt;&gt;&gt; s</div><div class="line">&apos;1,2,3,4,5&apos;</div></pre></td></tr></table></figure></p>
-<p>14.编写一个Python脚本–为我的所有重要文件创建备份的程序(压缩备份)<br>我们创建这个备份脚本的过程是编写程序的推荐方法——进行分析与设计<br>什么（分析）  如何（设计）<br>编写（实施）  测试（测试与调试）<br>使用（实施或开发） 维护（优化）<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!usr/bin/env python</span></div><div class="line"><span class="comment">#Filenname:backup_ver4.py</span></div><div class="line"><span class="keyword">import</span> os</div><div class="line"><span class="keyword">import</span> time</div><div class="line"><span class="comment">#1The files and directories to be backed up are specified in a list.</span></div><div class="line">source=[<span class="string">r'H:\Python\backup'</span>]</div><div class="line"><span class="comment">#2The backup must be stored in a main backup directory</span></div><div class="line">target_dir=<span class="string">'H:\Python\save\\'</span></div><div class="line"><span class="comment">#3The files are backed up into a zip file.</span></div><div class="line"><span class="comment">#4The current day is the name of the subdirectory in the main directory</span></div><div class="line">today = target_dir + time.strftime(<span class="string">'%Y%m%d'</span>)</div><div class="line">now = time.strftime(<span class="string">'%H%M%S'</span>)</div><div class="line"></div><div class="line"><span class="comment"># Take a comment from the user to create the name of the zip file</span></div><div class="line">comment = raw_input(<span class="string">'Enter a comment --&gt;'</span>)</div><div class="line"><span class="keyword">if</span> len(comment)== <span class="number">0</span>: <span class="comment"># check if a comment was entered</span></div><div class="line">    target = today + os.sep + now + <span class="string">'.zip'</span></div><div class="line"><span class="keyword">else</span>:</div><div class="line">    target = today + os.sep + now + <span class="string">'_'</span> + comment.replace(<span class="string">' '</span>,<span class="string">'_'</span>) +<span class="string">'.zip'</span></div><div class="line">    </div><div class="line"><span class="comment"># Create the subdirectory if it isn't already there</span></div><div class="line"><span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(today):</div><div class="line">    os.mkdir(today) <span class="comment"># make directory</span></div><div class="line">    <span class="keyword">print</span> <span class="string">'Successfully created directory'</span>, today</div><div class="line"><span class="comment"># The name of the zip file</span></div><div class="line"><span class="comment"># 5.we use the zip command (in Unix/Linux) to put the files in a zip archive</span></div><div class="line">zip_command=<span class="string">"winrar a %s %s"</span> %(target,<span class="string">' '</span>.join(source))</div><div class="line"></div><div class="line"><span class="comment"># Run the backup</span></div><div class="line"><span class="keyword">if</span> os.system(zip_command)==<span class="number">0</span>:</div><div class="line">    <span class="keyword">print</span> <span class="string">'Successful backup to'</span>,target</div><div class="line"><span class="keyword">else</span>:</div><div class="line">    <span class="keyword">print</span> <span class="string">'Backup Failed'</span></div></pre></td></tr></table></figure></p>
-<p>15.关于self：<br>类的方法与普通的函数只有一个特别的区别——它们必须有一个额外的第一个参数名称，但是在调用这个方法的时候你不为这个参数赋值，Python会提供这个值。这个特别的变量指对象本身，按照惯例它的名称是self。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!/usr/bin/env python</span></div><div class="line"><span class="comment"># -*- coding: utf-8 -*-</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span><span class="params">()</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">sayHi</span><span class="params">(self)</span>:</span></div><div class="line">    	<span class="keyword">print</span> <span class="string">'Hello,how are you?'</span></div><div class="line">p=Person()</div><div class="line">p.sayHi()</div></pre></td></tr></table></figure></p>
-<blockquote>
-<p>python method.py<br>Hello,how are you?</p>
-</blockquote>
-<p>16.os模块中比较有用的部分如下：<br>● os.name字符串指示你正在使用的平台。比如对于Windows，它是’nt’，而对于Linux/Unix用户，它是’posix’。<br>● os.getcwd()函数得到当前工作目录，即当前Python脚本工作的目录路径。<br>● os.getenv()和os.putenv()函数分别用来读取和设置环境变量。<br>● os.listdir()返回指定目录下的所有文件和目录名。<br>● os.remove()函数用来删除一个文件。<br>● os.system()函数用来运行shell命令。<br>● os.linesep字符串给出当前平台使用的行终止符。例如，Windows使用’\r\n’，Linux使用’\n’而Mac使用’\r’。<br>● os.path.split()函数返回一个路径的目录名和文件名。<br> os.path.split(‘/home/swaroop/byte/code/poem.txt’)<br>(‘/home/swaroop/byte/code’, ‘poem.txt’)<br>● os.path.isfile()和os.path.isdir()函数分别检验给出的路径是一个文件还是目录。类似地，os.path.exists()函数用来检验给出的路径是否真地存在。<br>17.exec和eval语句<br>exec语句用来执行储存在字符串或文件中的Python语句</p>
-<blockquote>
-<p>exec ‘print “Hello World”‘<br>Hello World</p>
-</blockquote>
-<p>eval语句用来计算存储在字符串中的有效Python表达式。</p>
-<blockquote>
-<p>eval(‘2*3’)<br>6</p>
-</blockquote>
-
           
+
+如何退出Python提示符如果你使用的是Linux/BSDshell，那么按Ctrl-d退出提示符。如果是在Windows命令行中，则按Ctrl-z再按Enterby the way,如果想在程序运行时中断执行或取消程序，按Ctrl-c
+行末的单独一个反斜杠\表示字符串在下一行继续，而不是开始一
+          ...
+
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/11/01/A byte of python学习笔记/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -659,12 +583,17 @@
       
         
           
-            <blockquote>
-<p>任思绪向远处蔓延，无边无际，所思所感所悟，皆惊觉。</p>
-</blockquote>
-<p>&emsp;&emsp;许久未见大太阳的阴天，窗外又下起了滂沱大雨，吃完午饭在路上鞋子和裤脚全都湿透了。<br>&emsp;&emsp;不知不觉研究生涯已经开始两个月，光阴飞逝，却感一事无成，浮躁静不下心，什么都想做却什么也做不成，往日专心专注，踏实充实的状态不复存在，究其原因，细致想来有以下几点：<br>&emsp;&emsp;1.思想麻痹，不思进取，天马行空，不切实际地做白日梦<br>&emsp;&emsp;2.得意沉醉于过往所取得的小成绩，却背离初衷，忘记了为什么要出发<br>&emsp;&emsp;3.对自身实力估计有误，目标不明确，不知道前路艰辛。<br>&emsp;&emsp;4.在安逸中滋生了懒惰的心理，自知而不加改正，不自控，不能踏实一步一个脚印地努力。<br>&emsp;&emsp;回首往日，立足今夕，理想很丰满，但没有点滴的努力，只能面对骨干的现实，到最后也定以失败告终。从今天给自己定下目标，做好规划，以一个月为限，三个月为期，辅以每日记录，总结自己的过去，记录自己的成长。立此志！<br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;2016年10月27日</p>
-
           
+任思绪向远处蔓延，无边无际，所思所感所悟，皆惊觉。
+
+&emsp;&emsp;许久未见大太阳的阴天，窗外又下起了滂沱大雨，吃完午饭在路上鞋子和裤脚全都湿透了。&emsp;&emsp;不知不觉研究生涯已经开始两个月，光阴飞逝，却感一事无成，浮躁静不下心，什么都想做却什么也做不成，往日专心专注，踏实充
+          ...
+
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/10/27/往日今夕/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -772,12 +701,18 @@
       
         
           
-            <p>之前几经折腾终于利用github和hexo搭建了属于自己的博客，希望以后在自己的这篇小天地，多记录，多分享。</p>
-<blockquote>
-<p>开启个人博客新篇章，希望多分享多交流，共同进步，学习新事物。</p>
-</blockquote>
+          之前几经折腾终于利用github和hexo搭建了属于自己的博客，希望以后在自己的这篇小天地，多记录，多分享。
+
+开启个人博客新篇章，希望多分享多交流，共同进步，学习新事物。
+
 
           
+
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/10/26/新的开始/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
